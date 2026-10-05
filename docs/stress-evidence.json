@@ -1,0 +1,8 @@
+{
+  "duplicateSubmissions": 24,
+  "concurrentWorkers": 8,
+  "uniqueAttempts": 1,
+  "successfulConcurrentReads": 40,
+  "serverErrors": 0,
+  "seconds": 0.318
+}
