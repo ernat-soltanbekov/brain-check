@@ -1,0 +1,37 @@
+# Local demonstration only; ports bind to localhost.
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      DATABASE_PATH: /data/db.sqlite3
+      DJANGO_DEBUG: "true"
+      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1,backend
+      LLM_BASE_URL: ${LLM_BASE_URL:-}
+      LLM_MODEL: ${LLM_MODEL:-}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_TIMEOUT_SECONDS: ${LLM_TIMEOUT_SECONDS:-30}
+    volumes:
+      - study-data:/data
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    command: >
+      sh -c "python backend/manage.py migrate --noinput &&
+             python backend/manage.py seed_demo &&
+             gunicorn --chdir backend wsgi:application --bind 0.0.0.0:8000 --workers 2 --threads 4 --timeout 180"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health/')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+  frontend:
+    build:
+      context: frontend
+    ports:
+      - "127.0.0.1:8080:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+volumes:
+  study-data:

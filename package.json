@@ -1,0 +1,13 @@
+{
+  "name": "brain-check",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "test": "npm --prefix frontend test"
+  },
+  "engines": {
+    "node": ">=22.12"
+  }
+}

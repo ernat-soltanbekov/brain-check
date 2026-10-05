@@ -1,0 +1,6 @@
+Django==5.2.17
+djangorestframework==3.18.1
+django-cors-headers==4.9.0
+httpx==0.28.1
+python-dotenv==1.2.4
+gunicorn==26.2.0

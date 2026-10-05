@@ -1,0 +1,9 @@
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "settings"
+pythonpath = ["backend"]
+testpaths = ["backend/tests"]
+[tool.ruff]
+line-length = 100
+exclude = ["backend/quizapp/migrations"]
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
