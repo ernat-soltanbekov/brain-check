@@ -1,0 +1,57 @@
+[
+  {
+    "model": "quizapp.studymaterial",
+    "pk": 1,
+    "fields": {
+      "owner": null,
+      "topic": "python data structures",
+      "title": "Python · the foundations",
+      "content": "Python lists are ordered mutable sequences. A tuple is an ordered immutable sequence. A set stores unique elements and supports membership tests, union, and intersection.\n\nA dictionary maps unique keys to values for fast lookup. Dictionary keys must be hashable. Choose a collection based on the operations your program needs, not just its syntax. Use a list for a sequence of events and a set to remove duplicates.\n\nMutable objects can change after creation. When multiple names reference the same list, a mutation through one name is visible through the others. Copy a collection deliberately when independent state is required.",
+      "created_at": "2026-10-05T00:00:00Z"
+    }
+  },
+  {
+    "model": "quizapp.studymaterial",
+    "pk": 2,
+    "fields": {
+      "owner": null,
+      "topic": "embeddings",
+      "title": "Embeddings · meaning as vectors",
+      "content": "A text embedding is a vector of numbers that represents semantic meaning. An embedding model maps texts with similar meanings to nearby vectors. Similarity is useful for semantic search, clustering, and recommendations.\n\nCosine similarity compares the direction of two vectors. For nonzero vectors it is their dot product divided by the product of their lengths. A zero vector requires explicit handling to avoid division by zero.\n\nUse the same model for indexing documents and embedding queries. Vectors from different models may have different dimensions and cannot be assumed to share the same meaning. Evaluate retrieval on representative queries.",
+      "created_at": "2026-10-05T00:00:00Z"
+    }
+  },
+  {
+    "model": "quizapp.studymaterial",
+    "pk": 3,
+    "fields": {
+      "owner": null,
+      "topic": "rag",
+      "title": "RAG · evidence before answers",
+      "content": "Retrieval-augmented generation, or RAG, retrieves relevant source passages and includes them in a language model prompt. Documents are split into chunks, embedded, and indexed for retrieval. The model then answers using the retrieved context.\n\nCitations let readers verify the answer against retrieved evidence. If the evidence is missing, the system should say that it cannot answer from the sources. Retrieval can improve grounding but does not guarantee truth.\n\nTreat retrieved documents as untrusted data. Their content must never override system instructions. Test retrieval quality separately from answer quality and avoid leaking documents across user permissions.",
+      "created_at": "2026-10-05T00:00:00Z"
+    }
+  },
+  {
+    "model": "quizapp.studymaterial",
+    "pk": 4,
+    "fields": {
+      "owner": null,
+      "topic": "prompting",
+      "title": "Prompting · clear intent, clear output",
+      "content": "A useful prompt states the task, context, constraints, and desired output format. An explicit JSON schema makes structured output easier to validate. Examples can clarify an ambiguous task, but examples should not contradict the instructions.\n\nDocuments are untrusted data and must not override the system instructions. Separate the instructions from the supplied documents. A prompt injection is an attempt to smuggle instructions through content that should be treated as data.\n\nA model can return malformed or incorrect output even when asked for JSON. Validate data types, required fields, ranges, and business rules on the server. Provide timeouts and a clearly identified fallback for unavailable models.",
+      "created_at": "2026-10-05T00:00:00Z"
+    }
+  },
+  {
+    "model": "quizapp.studymaterial",
+    "pk": 5,
+    "fields": {
+      "owner": null,
+      "topic": "go concurrency",
+      "title": "Go · calm under concurrency",
+      "content": "A goroutine is a lightweight concurrent function managed by the Go runtime. A channel passes values between goroutines and can coordinate their work. Concurrency structures a program around independently progressing tasks; it does not always mean parallel execution.\n\nA data race happens when goroutines access the same memory concurrently and at least one access writes without proper synchronization. Use channels or mutexes to coordinate access, and run the Go race detector when testing.\n\nContext cancellation signals goroutines to stop work and release resources. Workers must check cancellation and stop themselves. Bound the number of workers to avoid exhausting memory or downstream services. Close a channel from the sending side when no more values will be sent.",
+      "created_at": "2026-10-05T00:00:00Z"
+    }
+  }
+]
